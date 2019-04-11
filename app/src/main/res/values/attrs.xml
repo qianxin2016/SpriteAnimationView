@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SpriteAnimationView">
+        <attr name="sprite_sheet" format="reference" />
+        <attr name="frame_width" format="dimension" />
+        <attr name="frame_height" format="dimension" />
+        <attr name="frame_count" format="integer" />
+        <attr name="start_frame" format="integer" />
+        <attr name="frame_duration" format="integer" />
+        <attr name="offset_per_second" format="dimension" />
+        <attr name="position" format="dimension" />
+        <attr name="in_place" format="boolean" />
+        <attr name="touch_to_move" format="boolean" />
+        <attr name="play_once" format="boolean" />
+    </declare-styleable>
+</resources>
