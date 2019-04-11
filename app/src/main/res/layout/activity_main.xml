@@ -13,7 +13,7 @@
     <com.xinxin.spritesheetanimation.SpriteAnimationView
         android:id="@+id/animation_view1"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         app:sprite_sheet="@drawable/rabbit" />
 
     <TextView
@@ -24,7 +24,7 @@
     <com.xinxin.spritesheetanimation.SpriteAnimationView
         android:id="@+id/animation_view2"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         app:sprite_sheet="@drawable/rabbit"
         app:in_place="false" />
 
@@ -36,10 +36,10 @@
     <com.xinxin.spritesheetanimation.SpriteAnimationView
         android:id="@+id/animation_view3"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         app:sprite_sheet="@drawable/rabbit"
         app:in_place="false"
-        app:offset_per_second="200dp"/>
+        app:offset_per_second="200dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,9 +49,43 @@
     <com.xinxin.spritesheetanimation.SpriteAnimationView
         android:id="@+id/animation_view4"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         app:sprite_sheet="@drawable/rabbit"
         app:in_place="false"
         app:touch_to_move="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="row_count = 4, row_index = 1"/>
+
+    <com.xinxin.spritesheetanimation.SpriteAnimationView
+        android:id="@+id/animation_view5"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:sprite_sheet="@drawable/unicore"
+        app:frame_count="4"
+        app:frame_width="80dp"
+        app:frame_height="80dp"
+        app:row_count="4"
+        app:row_index="1"
+        app:in_place="false"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="row_count = 2, row_index = 1"/>
+
+    <com.xinxin.spritesheetanimation.SpriteAnimationView
+        android:id="@+id/animation_view6"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:sprite_sheet="@drawable/antelope"
+        app:frame_count="4"
+        app:frame_width="80dp"
+        app:frame_height="80dp"
+        app:row_count="2"
+        app:row_index="1"
+        app:in_place="false"/>
 
 </LinearLayout>

@@ -59,6 +59,12 @@ public class SpriteAnimationView extends SurfaceView implements Runnable {
     // Frame count
     private int mFrameCount = 3;
 
+    // Sprite sheet's row count
+    private int mRowCount = 1;
+
+    // Indicate which row of the sprite sheet should be used
+    private int mRowIndex = 0;
+
     // Current frame index
     private int mCurrentFrame = 0;
 
@@ -106,20 +112,17 @@ public class SpriteAnimationView extends SurfaceView implements Runnable {
         // Scale the bitmap
         mBitmap = Bitmap.createScaledBitmap(mBitmap,
                 mFrameWidth * mFrameCount,
-                mFrameHeight,
+                mFrameHeight * mRowCount,
                 false);
 
         // Initialize frame rectangles
         mSrcFrameRect = new Rect(
                 0,
-                0,
+                mFrameHeight * mRowIndex,
                 mFrameWidth,
-                mFrameHeight);
+                mFrameHeight * (mRowIndex + 1));
 
-        mDstFrameRect = new RectF(
-                mOffset, 0,
-                mOffset + mFrameWidth,
-                mFrameHeight);
+        mDstFrameRect = new RectF();
     }
 
     private void parseAttributes(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -139,6 +142,12 @@ public class SpriteAnimationView extends SurfaceView implements Runnable {
                     break;
                 case R.styleable.SpriteAnimationView_frame_count:
                     mFrameCount = a.getInteger(attr, mFrameCount);
+                    break;
+                case R.styleable.SpriteAnimationView_row_count:
+                    mRowCount = a.getInteger(attr, mRowCount);
+                    break;
+                case R.styleable.SpriteAnimationView_row_index:
+                    mRowIndex = a.getInteger(attr, mRowIndex);
                     break;
                 case R.styleable.SpriteAnimationView_start_frame:
                     mCurrentFrame = a.getInteger(attr, mCurrentFrame);
@@ -229,9 +238,9 @@ public class SpriteAnimationView extends SurfaceView implements Runnable {
             getCurrentFrame();
 
             // Set destination frame rect
-            mDstFrameRect.set((int) mOffset,
+            mDstFrameRect.set(mOffset,
                     0,
-                    (int) mOffset + mFrameWidth,
+                    mOffset + mFrameWidth,
                     mFrameHeight);
 
             // Draw bitmap from source to destination
