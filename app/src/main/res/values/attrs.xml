@@ -14,5 +14,6 @@
         <attr name="in_place" format="boolean" />
         <attr name="touch_to_move" format="boolean" />
         <attr name="play_once" format="boolean" />
+        <attr name="direction" format="string" />
     </declare-styleable>
 </resources>

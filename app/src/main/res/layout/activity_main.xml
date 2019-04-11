@@ -69,12 +69,12 @@
         app:frame_height="80dp"
         app:row_count="4"
         app:row_index="1"
-        app:in_place="false"/>
+        app:in_place="false" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="row_count = 2, row_index = 1"/>
+        android:text="direction = right-to-left"/>
 
     <com.xinxin.spritesheetanimation.SpriteAnimationView
         android:id="@+id/animation_view6"
@@ -86,6 +86,7 @@
         app:frame_height="80dp"
         app:row_count="2"
         app:row_index="1"
-        app:in_place="false"/>
+        app:in_place="false"
+        app:direction="right-to-left" />
 
 </LinearLayout>

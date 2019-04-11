@@ -20,6 +20,9 @@ import android.view.SurfaceView;
 public class SpriteAnimationView extends SurfaceView implements Runnable {
     private static final String TAG = "AnimationView";
 
+    private static final String LEFT_TO_RIGHT = "left-to-right";
+    private static final String RIGHT_TO_LEFT = "right-to-left";
+
     private Thread mRenderThread;
 
     private SurfaceHolder mSurfaceHolder;
@@ -85,6 +88,9 @@ public class SpriteAnimationView extends SurfaceView implements Runnable {
 
     // Play animation in loop or not
     private boolean mPlayOnce = false;
+
+    // Move direction (left-to-right or right-to-left)
+    private String mDirection = LEFT_TO_RIGHT;
 
     public SpriteAnimationView(Context context) {
         this(context, null);
@@ -170,9 +176,18 @@ public class SpriteAnimationView extends SurfaceView implements Runnable {
                 case R.styleable.SpriteAnimationView_play_once:
                     mPlayOnce = a.getBoolean(attr, mPlayOnce);
                     break;
+                case R.styleable.SpriteAnimationView_direction:
+                    mDirection = (a.getString(attr) != null ? a.getString(attr) : mDirection);
+                    break;
             }
         }
         a.recycle();
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        mOffset = (mDirection.equals(LEFT_TO_RIGHT) ? 0 : getMeasuredWidth() - mFrameWidth);
     }
 
     @Override
@@ -216,12 +231,24 @@ public class SpriteAnimationView extends SurfaceView implements Runnable {
 
     public void updateFrame() {
         if (mIsPlaying && !mInPlace) {
-            // Update the offset based on fps
-            mOffset += (mOffsetPerSecond / mFps);
-            if (!mPlayOnce) {
-                // Wrap the offset to play animation repeatedly
-                if (getMeasuredWidth() > 0) {
-                    mOffset %= getMeasuredWidth();
+            if (getMeasuredWidth() > 0) {
+                switch (mDirection) {
+                    case LEFT_TO_RIGHT:
+                        // Update the offset based on fps
+                        mOffset += (mOffsetPerSecond / mFps);
+                        if (!mPlayOnce) {
+                            // Wrap the offset to play animation repeatedly
+                            mOffset %= getMeasuredWidth();
+                        }
+                        break;
+                    case RIGHT_TO_LEFT:
+                        // Update the offset based on fps
+                        mOffset -= (mOffsetPerSecond / mFps);
+                        if (!mPlayOnce) {
+                            // Wrap the offset to play animation repeatedly
+                            mOffset = mOffset > -mFrameWidth ? mOffset : mOffset + getMeasuredWidth();
+                        }
+                        break;
                 }
             }
         }
