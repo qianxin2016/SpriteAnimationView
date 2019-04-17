@@ -1,5 +1,5 @@
 # SpriteAnimationView
-A customized view to play sprite sheet animation
+A customized view to play sprite sheet animation [查看中文版本](https://github.com/qianxin2016/SpriteAnimationView/blob/master/README_CN.md)
 
 <img src="https://github.com/qianxin2016/SpriteAnimationView/blob/master/snapshot.gif" width="240" height="360" />
 
