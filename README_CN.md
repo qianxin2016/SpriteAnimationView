@@ -23,6 +23,12 @@
     app:touch_to_move="false"             // 是否通过touch事件驱动动画 (默认值为false)
     app:direction="right-to-left"         // 移动方向 (默认值为left-to-right)
 />
+
+// 代码中启动/停止动画
+SpriteAnimationView spriteAnimationView = findViewById(R.id.animation_view);
+spriteAnimationView.start();
+...
+spriteAnimationView.stop();
 ```
 
 #### 微信公众号:

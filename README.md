@@ -23,6 +23,12 @@ A customized view to play sprite sheet animation [查看中文版本](https://gi
     app:touch_to_move="false"             // Trigger the animation via touch event or not (false by default)
     app:direction="right-to-left"         // Move direction (left-to-right by default)
 />
+
+// In source code
+SpriteAnimationView spriteAnimationView = findViewById(R.id.animation_view);
+spriteAnimationView.start();
+...
+spriteAnimationView.stop();
 ```
 
 #### Wechat:
